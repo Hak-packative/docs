@@ -81,26 +81,31 @@ flowchart TD
 ## C3 — Pitfalls
 
 ```mermaid
-flowchart TD
+flowchart LR
   subgraph NAV["Navigation"]
+    direction TB
     A1["DNS Lookup"] --> A2["TCP Handshake"] --> A3["TLS Negotiation"]
   end
 
   subgraph RESP["Response"]
+    direction TB
     B1["HTTP GET"] --> B2["TTFB"] --> B3["TCP Slow Start"]
   end
 
   subgraph PARSE["Parsing"]
+    direction TB
     C1["Building the DOM Tree"] --> C3["Building the CSSOM Tree"] --> C4["JavaScript Compilation"] --> C5["Building the Accessibility Tree"]
     C2["Preload Scanner"] -.->|"parallel"| C3
     C2 -.->|"parallel"| C4
   end
 
   subgraph RENDER["Render"]
+    direction TB
     D1["Style"] --> D2["Layout"] --> D3["Paint"] --> D4["Compositing"]
   end
 
   subgraph INTERACT["Interactivity"]
+    direction TB
     E1["TTI"]
   end
 
@@ -108,91 +113,91 @@ flowchart TD
 
   A1 -.-> PA1
   subgraph PA1[" "]
-    direction LR
+
     A1a["too many unique origins"] --- A1b["fonts, analytics, CDN on separate hosts"]
   end
 
   A2 -.-> PA2
   subgraph PA2[" "]
-    direction LR
+
     A2a["not using HTTP/2"]
   end
 
   A3 -.-> PA3
   subgraph PA3[" "]
-    direction LR
+
     A3a["TLS 1.2 needs more round trips"]
   end
 
   B2 -.-> PB2
   subgraph PB2[" "]
-    direction LR
+
     B2a["SSR blocking on slow API calls"] --- B2b["no response caching"]
   end
 
   B3 -.-> PB3
   subgraph PB3[" "]
-    direction LR
+
     B3a["initial HTML over 14KB"] --- B3b["critical CSS not inlined"]
   end
 
   C1 -.-> PC1
   subgraph PC1[" "]
-    direction LR
+
     C1a["sync script blocks parser"] --- C1b["deeply nested DOM"]
   end
 
   C2 -.-> PC2
   subgraph PC2[" "]
-    direction LR
+
     C2a["LCP image not preloaded"] --- C2b["fonts without preload"]
   end
 
   C3 -.-> PC3
   subgraph PC3[" "]
-    direction LR
+
     C3a["large or unused CSS"] --- C3b["render-blocking stylesheets"]
   end
 
   C4 -.-> PC4
   subgraph PC4[" "]
-    direction LR
+
     C4a["large JS bundles"] --- C4b["no code splitting"]
   end
 
   C5 -.-> PC5
   subgraph PC5[" "]
-    direction LR
+
     C5a["missing ARIA roles"] --- C5b["dynamic DOM updates"]
   end
 
   D1 -.-> PD1
   subgraph PD1[" "]
-    direction LR
+
     D1a["overly specific CSS selectors"] --- D1b["frequent JS style mutations"]
   end
 
   D2 -.-> PD2
   subgraph PD2[" "]
-    direction LR
+
     D2a["img without width and height"] --- D2b["layout thrashing"]
   end
 
   D3 -.-> PD3
   subgraph PD3[" "]
-    direction LR
+
     D3a["box-shadow and filter on many elements"] --- D3b["repaint area too large"]
   end
 
   D4 -.-> PD4
   subgraph PD4[" "]
-    direction LR
+
     D4a["animating width or height"] --- D4b["overusing will-change"]
   end
 
   E1 -.-> PE1
   subgraph PE1[" "]
-    direction LR
+
     E1a["heavy JS after load"] --- E1b["long tasks block response"]
   end
 
