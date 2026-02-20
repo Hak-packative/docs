@@ -216,7 +216,50 @@ flowchart LR
   style PD3 fill:none,stroke:none
   style PD4 fill:none,stroke:none
   style PE1 fill:none,stroke:none
+
+  %% Critical
+  style B2a fill:#ef4444,color:#fff,stroke:none
+  style B3a fill:#ef4444,color:#fff,stroke:none
+  style C2a fill:#ef4444,color:#fff,stroke:none
+  style C4a fill:#ef4444,color:#fff,stroke:none
+  style D2a fill:#ef4444,color:#fff,stroke:none
+
+  %% High
+  style B2b fill:#f97316,color:#fff,stroke:none
+  style B3b fill:#f97316,color:#fff,stroke:none
+  style C1a fill:#f97316,color:#fff,stroke:none
+  style C2b fill:#f97316,color:#fff,stroke:none
+  style C3a fill:#f97316,color:#fff,stroke:none
+  style C3b fill:#f97316,color:#fff,stroke:none
+  style E1b fill:#f97316,color:#fff,stroke:none
+
+  %% Medium
+  style A1a fill:#eab308,color:#000,stroke:none
+  style A1b fill:#eab308,color:#000,stroke:none
+  style A2a fill:#eab308,color:#000,stroke:none
+  style C1b fill:#eab308,color:#000,stroke:none
+  style C4b fill:#eab308,color:#000,stroke:none
+  style D1b fill:#eab308,color:#000,stroke:none
+  style D2b fill:#eab308,color:#000,stroke:none
+  style D4a fill:#eab308,color:#000,stroke:none
+  style E1a fill:#eab308,color:#000,stroke:none
+
+  %% Low
+  style A3a fill:#94a3b8,color:#fff,stroke:none
+  style C5a fill:#94a3b8,color:#fff,stroke:none
+  style C5b fill:#94a3b8,color:#fff,stroke:none
+  style D1a fill:#94a3b8,color:#fff,stroke:none
+  style D3a fill:#94a3b8,color:#fff,stroke:none
+  style D3b fill:#94a3b8,color:#fff,stroke:none
+  style D4b fill:#94a3b8,color:#fff,stroke:none
 ```
+
+**Legend**
+
+🔴 Critical — direct, measurable hit on Core Web Vitals
+🟠 High — significant impact, fix after critical
+🟡 Medium — worth addressing once high items are resolved
+⚫ Low — MDN explicitly flags these as not worth chasing first
 
 ---
 
